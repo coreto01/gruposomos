@@ -74,7 +74,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .mk{font-size:50px;margin-bottom:10px;}
 .mi h2{font-size:20px;font-weight:800;color:var(--vd);margin-bottom:6px;}
 .mi p{font-size:13px;color:var(--sub);line-height:1.5;}
-.mc{margin-top:20px;padding:13px 28px;background:var(--vd);color:#fff;border:none;border-radius:11px;font-size:15px;font-weight:700;cursor:pointer;}
+.mc{margin-top:16px;padding:13px 28px;background:var(--vd);color:#fff;border:none;border-radius:11px;font-size:15px;font-weight:700;cursor:pointer;}
+.mwpp{display:block;width:100%;margin-top:10px;padding:15px;background:#25D366;color:#fff;border:none;border-radius:11px;font-size:16px;font-weight:800;cursor:pointer;letter-spacing:.01em;}
+.mpasso{background:#F0FDF4;border-radius:11px;padding:14px 16px;margin-top:14px;text-align:left;}
+.mpasso p{font-size:13px;color:#1E7A3A;font-weight:700;margin-bottom:8px;}
+.mpasso ol{padding-left:18px;margin:0;}
+.mpasso li{font-size:13px;color:#374151;margin-bottom:5px;line-height:1.4;}
+.mpasso li strong{color:#1E7A3A;}
+.maviso{background:#FEF3C7;border-radius:11px;padding:11px 14px;margin-top:10px;text-align:left;}
+.maviso p{font-size:12px;color:#92400E;line-height:1.5;margin:0;}
 </style>
 </head>
 <body>
@@ -169,7 +177,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
     <div class="mk">✅</div>
     <h2>Presença registrada!</h2>
     <p id="modal-txt"></p>
-    <button class="mc" onclick="document.getElementById('modal').classList.remove('show')">Fechar</button>
+    <div id="status-sheets" class="mok" style="display:none"></div>
+    <div class="mpasso">
+      <p>📲 Agora envie no WhatsApp do grupo:</p>
+      <ol>
+        <li>Toque em <strong>"Abrir WhatsApp"</strong> abaixo</li>
+        <li>Cole a mensagem (já foi copiada automaticamente)</li>
+        <li>Anexe a <strong>foto da turma</strong></li>
+        <li>Envie</li>
+      </ol>
+    </div>
+    <div class="maviso"><p>📊 Os dados de presença já foram salvos automaticamente na planilha da Coreto.</p></div>
+    <button class="mwpp" id="btn-wpp" onclick="abrirWpp()">📲 Abrir WhatsApp do grupo</button>
+    <button class="mc" onclick="fecharModal()">Fechar</button>
   </div>
 </div>
 
@@ -263,26 +283,101 @@ function copiar(){
   navigator.clipboard.writeText(msg).then(()=>{const b=document.querySelector('.wc');b.textContent='✅ Copiado!';setTimeout(()=>b.textContent='📋 Copiar mensagem',2200);}).catch(()=>alert('Selecione o texto acima e copie manualmente.'));
 }
 
+// ── URL do Google Apps Script (preenchida após publicação) ──────
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbylPaAwKObeaDL_PMRyIsgUHwwrd7xihvkby8eSa-02E4s8yCMRC_lwBIYD-cAMIXzj/exec';
+const WPP_NUM    = '5531999838286';
+
 function enviar(){
   const data=document.getElementById('fdata').value,num=document.getElementById('faula').value,resp=document.getElementById('fresp').value;
-  if(!data){alert('Preencha a data.');return;}if(!num){alert('Preencha o número da aula.');return;}if(!resp){alert('Selecione o responsável.');return;}
+  if(!data){alert('Preencha a data.');return;}
+  if(!num){alert('Preencha o número da aula.');return;}
+  if(!resp){alert('Selecione o responsável.');return;}
   const nm=TODOS.filter(n=>est[n]===null);
   if(nm.length&&!confirm(`${nm.length} aluno(s) sem marcação:\n\n${nm.join('\n')}\n\nContinuar mesmo assim?`))return;
-  const rows=[['Grupo Somos — Registro de Presença'],[`Aula: ${num}`,`Data: ${data}`,`Responsável: ${resp}`],[],['Nº','Nome','Categoria','Presença']];
-  AP.forEach((n,i)=>rows.push([i+1,n,'Aprovado',est[n]||'']));rows.push([]);
-  OUV.forEach((n,i)=>rows.push([`OUV${i+1}`,n,'Ouvinte/Suplente',est[n]||'']));
-  const tP=AP.filter(n=>est[n]==='P').length,tR=AP.filter(n=>est[n]!==null).length;
-  rows.push([],[`Freq. aprovados:`,`${tP}/${tR} (${tR?Math.round(tP/tR*100):0}%)`]);
-  const obs=document.getElementById('fobs').value.trim();if(obs)rows.push(['Obs:',obs]);
+
+  const tP=AP.filter(n=>est[n]==='P').length;
+  const tF=AP.filter(n=>est[n]==='F').length;
+  const tJ=AP.filter(n=>est[n]==='J').length;
+  const tR=tP+tF+tJ;
+  const pct=tR>0?Math.round(tP/tR*100):0;
+
+  // Monta objeto de dados
+  const presencas={};
+  TODOS.forEach(n=>presencas[n]=est[n]||'');
+
+  const payload={
+    data, aula:num, responsavel:resp,
+    presencas,
+    totais:{presentes:tP,faltas:tF,justificados:tJ,percentual:pct},
+    obs:document.getElementById('fobs').value.trim()
+  };
+
+  // Copia mensagem WhatsApp
+  const msg=gerarMsg();
+  if(msg) navigator.clipboard.writeText(msg).catch(()=>{});
+
+  // Mostra modal imediatamente
+  const tTodos=TODOS.filter(n=>est[n]==='P').length;
+  const tFTodos=TODOS.filter(n=>est[n]==='F').length;
+  document.getElementById('modal-txt').innerHTML=
+    `<strong>Aula ${num} · ${data}</strong><br>Responsável: ${resp}<br><br>`+
+    `✅ ${tTodos} presentes &nbsp;|&nbsp; ❌ ${tFTodos} faltas<br><br>`+
+    `Mensagem copiada — pronta para colar no WhatsApp.`;
+  document.getElementById('modal').classList.add('show');
+
+  // Envia para Google Sheets em segundo plano
+  const st=document.getElementById('status-sheets');
+  st.style.display='block';
+  st.className='mok';
+  st.textContent='⏳ Salvando na planilha...';
+
+  if(SCRIPT_URL && SCRIPT_URL !== '__SCRIPT_URL__'){
+    fetch(SCRIPT_URL,{
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    }).then(()=>{
+      st.textContent='✅ Salvo na planilha da Coreto!';
+    }).catch(()=>{
+      st.className='merr';
+      st.textContent='⚠️ Não foi possível salvar na planilha. Envie o CSV manualmente.';
+      baixarCSV(payload);
+    });
+  } else {
+    // Script não configurado ainda — baixa CSV como fallback
+    st.className='merr';
+    st.textContent='⚠️ Planilha não configurada. Baixando CSV...';
+    baixarCSV(payload);
+  }
+}
+
+function baixarCSV(p){
+  const rows=[
+    ['Grupo Somos — Registro de Presença'],
+    [`Aula: ${p.aula}`,`Data: ${p.data}`,`Responsável: ${p.responsavel}`],
+    [],['Nº','Nome','Categoria','Presença']
+  ];
+  AP.forEach((n,i)=>rows.push([i+1,n,'Aprovado',p.presencas[n]||'']));
+  rows.push([]);
+  OUV.forEach((n,i)=>rows.push([`OUV${i+1}`,n,'Ouvinte/Suplente',p.presencas[n]||'']));
+  rows.push([],[`Freq. aprovados:`,`${p.totais.presentes}/${p.totais.presentes+p.totais.faltas+p.totais.justificados} (${p.totais.percentual}%)`]);
+  if(p.obs) rows.push(['Obs:',p.obs]);
   const csv=rows.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
   const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});
   const url=URL.createObjectURL(blob),a=document.createElement('a');
-  a.href=url;a.download=`presenca_aula${String(num).padStart(2,'0')}_${data}.csv`;
+  a.href=url;a.download=`presenca_aula${String(p.aula).padStart(2,'0')}_${p.data}.csv`;
   document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
-  const msg=gerarMsg();if(msg)navigator.clipboard.writeText(msg).catch(()=>{});
-  const tF=TODOS.filter(n=>est[n]==='F').length;
-  document.getElementById('modal-txt').innerHTML=`<strong>Aula ${num} · ${data}</strong><br>Responsável: ${resp}<br><br>✅ ${tP+OUV.filter(n=>est[n]==='P').length} presentes &nbsp;|&nbsp; ❌ ${tF} faltas<br><br>CSV baixado automaticamente.<br>Mensagem copiada — cole no WhatsApp!`;
-  document.getElementById('modal').classList.add('show');
+}
+
+function abrirWpp(){
+  const msg=gerarMsg();
+  const txt=msg?encodeURIComponent(msg):'';
+  window.open(`https://wa.me/${WPP_NUM}?text=${txt}`,'_blank');
+}
+
+function fecharModal(){
+  document.getElementById('modal').classList.remove('show');
 }
 
 init();
