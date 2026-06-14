@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1A3A5C">
+<title>Grupo Somos · Presença</title>
+<style>
+:root{--az:#1A3A5C;--az2:#2E75B6;--vd:#1E7A3A;--vm:#B91C1C;--am:#92400E;--am-bg:#FEF3C7;--bg:#F0F4F8;--card:#fff;--tx:#1A3A5C;--sub:#64748B;--brd:#CBD5E1;--r:14px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--tx);padding-bottom:40px;}
+.hd{background:var(--az);color:#fff;padding:14px 16px 12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.25);}
+.ht{display:flex;align-items:center;gap:10px;}
+.lg{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#2E75B6,#1E7A3A);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.hd h1{font-size:16px;font-weight:800;}
+.hd p{font-size:11px;opacity:.7;margin-top:1px;}
+.ab{margin-top:10px;background:rgba(255,255,255,.12);border-radius:10px;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;}
+.an{font-size:20px;font-weight:800;}
+.ai{font-size:11px;opacity:.85;}
+.pb{background:rgba(255,255,255,.2);border-radius:4px;height:4px;margin-top:8px;overflow:hidden;}
+.pf{height:100%;border-radius:4px;background:#4ADE80;transition:width .3s;}
+.pt{font-size:10px;opacity:.75;margin-top:3px;text-align:right;}
+.sc{margin:12px 12px 0;}
+.st{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sub);margin-bottom:6px;padding-left:2px;}
+.fr{display:flex;gap:8px;}
+.fd{flex:1;background:var(--card);border-radius:var(--r);box-shadow:0 2px 12px rgba(0,0,0,.1);padding:12px;}
+.fd label{font-size:10px;color:var(--sub);font-weight:600;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:5px;}
+.fd input,.fd select,.rc select{width:100%;border:1.5px solid var(--brd);border-radius:8px;padding:9px 10px;font-size:14px;color:var(--tx);background:var(--bg);font-family:inherit;outline:none;-webkit-appearance:none;appearance:none;}
+.rc{background:var(--card);border-radius:var(--r);box-shadow:0 2px 12px rgba(0,0,0,.1);padding:12px;}
+.rc label{font-size:10px;color:var(--sub);font-weight:600;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:6px;}
+.rc select{padding:11px 12px;font-size:15px;}
+.cd{background:var(--card);border-radius:var(--r);box-shadow:0 2px 12px rgba(0,0,0,.1);overflow:hidden;}
+.ai-row{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid #F1F5F9;gap:10px;transition:background .1s;}
+.ai-row:last-child{border-bottom:none;}
+.al{display:flex;align-items:center;gap:10px;flex:1;min-width:0;}
+.nu{width:26px;height:26px;border-radius:50%;background:var(--az);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.nu.o{background:#92400E;}
+.nm{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ct{font-size:10px;color:var(--sub);margin-top:1px;}
+.pb-row{display:flex;gap:5px;flex-shrink:0;}
+.btn{width:38px;height:38px;border-radius:9px;border:none;font-size:12px;font-weight:800;cursor:pointer;background:#F1F5F9;color:#94A3B8;display:flex;align-items:center;justify-content:center;transition:all .1s;}
+.btn:active{transform:scale(.88);}
+.btn.P.on{background:var(--vd);color:#fff;box-shadow:0 2px 5px rgba(30,122,58,.35);}
+.btn.F.on{background:var(--vm);color:#fff;box-shadow:0 2px 5px rgba(185,28,28,.35);}
+.btn.J.on{background:#D97706;color:#fff;box-shadow:0 2px 5px rgba(217,119,6,.35);}
+.sep{background:var(--am-bg);padding:7px 14px;font-size:10px;font-weight:700;color:var(--am);text-transform:uppercase;letter-spacing:.07em;border-bottom:1px solid #FDE68A;border-top:1px solid #FDE68A;}
+.fc{background:var(--card);border-radius:var(--r);box-shadow:0 2px 12px rgba(0,0,0,.1);padding:14px;}
+.fl{font-size:10px;color:var(--sub);font-weight:600;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:8px;}
+.fbs{display:flex;gap:8px;}
+.fb{flex:1;padding:12px 8px;border-radius:11px;border:none;font-size:13px;font-weight:700;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;background:#F1F5F9;color:var(--sub);transition:all .1s;}
+.fb .fi{font-size:22px;}
+.fb:active{transform:scale(.93);}
+.fb.ok{background:#D1FAE5;color:var(--vd);}
+.fi-inp{display:none;}
+.ths{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;}
+.th{width:64px;height:64px;border-radius:8px;object-fit:cover;border:2px solid var(--vd);}
+.oc{background:var(--card);border-radius:var(--r);box-shadow:0 2px 12px rgba(0,0,0,.1);padding:12px;}
+.oc label{font-size:10px;color:var(--sub);font-weight:600;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:6px;}
+.oc textarea{width:100%;border:1.5px solid var(--brd);border-radius:8px;padding:10px;font-size:13px;color:var(--tx);background:var(--bg);font-family:inherit;resize:none;outline:none;min-height:64px;}
+.wb{background:#ECF3FF;border-radius:var(--r);border:1.5px solid #BDD7EE;padding:12px;}
+.wl{font-size:10px;font-weight:700;color:var(--az2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
+.wm{font-size:12px;line-height:1.6;color:#1E293B;white-space:pre-wrap;font-family:"Courier New",monospace;background:#fff;border-radius:7px;padding:10px;border:1px solid #E2E8F0;max-height:160px;overflow-y:auto;}
+.wc{margin-top:7px;width:100%;padding:9px;background:#25D366;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;}
+.ev{display:block;width:100%;padding:16px;background:linear-gradient(135deg,var(--vd),#145A32);color:#fff;border:none;border-radius:var(--r);font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(30,122,58,.4);transition:all .15s;}
+.ev:active{transform:scale(.98);}
+.ale{background:linear-gradient(135deg,#FEF3C7,#FDE68A);border:1.5px solid #F59E0B;border-radius:var(--r);padding:12px 14px;display:flex;gap:10px;align-items:flex-start;}
+.ale strong{font-size:13px;color:#92400E;display:block;margin-bottom:2px;}
+.ale span{font-size:11px;color:#B45309;}
+.mo{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:flex-end;justify-content:center;z-index:999;opacity:0;pointer-events:none;transition:opacity .25s;}
+.mo.show{opacity:1;pointer-events:all;}
+.mi{background:#fff;border-radius:22px 22px 0 0;padding:28px 22px 40px;width:100%;transform:translateY(60px);transition:transform .3s cubic-bezier(.34,1.56,.64,1);text-align:center;}
+.mo.show .mi{transform:translateY(0);}
+.mk{font-size:50px;margin-bottom:10px;}
+.mi h2{font-size:20px;font-weight:800;color:var(--vd);margin-bottom:6px;}
+.mi p{font-size:13px;color:var(--sub);line-height:1.5;}
+.mc{margin-top:20px;padding:13px 28px;background:var(--vd);color:#fff;border:none;border-radius:11px;font-size:15px;font-weight:700;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<div class="hd">
+  <div class="ht">
+    <div class="lg">🎭</div>
+    <div><h1>Grupo Somos</h1><p>Coreto Cultural · Instituto Unimed-BH</p></div>
+  </div>
+  <div class="ab">
+    <div><div class="ai">Lista de Presença</div><div class="an" id="aula-n">Aula —</div></div>
+    <div style="text-align:right"><div class="ai" id="data-n">—</div><div class="ai" style="opacity:.6">Sáb · 13h–15h</div></div>
+  </div>
+  <div class="pb"><div class="pf" id="pfill" style="width:0%"></div></div>
+  <div class="pt" id="ptxt">0 / 16 marcados</div>
+</div>
+
+<div class="sc" id="ale-wrap" style="display:none">
+  <div class="ale">
+    <span style="font-size:22px;flex-shrink:0">⭐</span>
+    <div><strong>Véspera do Espetáculo — Palácio das Artes!</strong><span>Amanhã (27/09) é o grande dia. Presença obrigatória.</span></div>
+  </div>
+</div>
+
+<div class="sc">
+  <div class="st">Informações da aula</div>
+  <div class="fr">
+    <div class="fd"><label>Data</label><input type="date" id="fdata"></div>
+    <div class="fd"><label>Nº da aula</label><input type="number" id="faula" min="1" max="30" placeholder="Ex: 1"></div>
+  </div>
+</div>
+
+<div class="sc">
+  <div class="st">Responsável</div>
+  <div class="rc">
+    <label>Selecione seu nome</label>
+    <select id="fresp">
+      <option value="">— selecionar —</option>
+      <optgroup label="Professores"><option>Cyntia Reyder</option><option>Marlon Castro</option><option>A definir</option></optgroup>
+      <optgroup label="Coordenadora"><option>Inês Amaral</option></optgroup>
+      <optgroup label="Coreógrafos"><option>Isabela Guerra</option><option>Pedro Lobo</option></optgroup>
+    </select>
+  </div>
+</div>
+
+<div class="sc">
+  <div class="st">Chamada — toque em P · F · J</div>
+  <div class="cd">
+    <div id="ap-list"></div>
+    <div class="sep">Ouvintes / Suplentes</div>
+    <div id="ouv-list"></div>
+  </div>
+</div>
+
+<div class="sc">
+  <div class="st">Foto da aula (obrigatória)</div>
+  <div class="fc">
+    <span class="fl">📸 Tire agora — serve como comprovação com data e hora</span>
+    <div class="fbs">
+      <button class="fb" id="bcam" onclick="document.getElementById('ficam').click()"><span class="fi">📷</span>Câmera</button>
+      <button class="fb" id="bgal" onclick="document.getElementById('figal').click()"><span class="fi">🖼️</span>Galeria</button>
+    </div>
+    <input type="file" id="ficam" accept="image/*" capture="environment" class="fi-inp">
+    <input type="file" id="figal" accept="image/*" multiple class="fi-inp">
+    <div class="ths" id="thumbs"></div>
+    <div id="fnome" style="font-size:11px;color:var(--sub);margin-top:5px;word-break:break-all"></div>
+  </div>
+</div>
+
+<div class="sc">
+  <div class="st">Observações (opcional)</div>
+  <div class="oc"><label>Ocorrências, justificativas ou aula especial</label><textarea id="fobs" placeholder="Ex: ensaio extra, aluno com atestado..."></textarea></div>
+</div>
+
+<div class="sc">
+  <div class="st">Mensagem para o grupo de WhatsApp</div>
+  <div class="wb">
+    <div class="wl">📲 Prévia — copie e envie no grupo</div>
+    <div class="wm" id="wpp-prev">Preencha os campos acima para gerar a mensagem.</div>
+    <button class="wc" onclick="copiar()">📋 Copiar mensagem</button>
+  </div>
+</div>
+
+<div class="sc">
+  <button class="ev" onclick="enviar()">✅ Registrar Presença e Baixar CSV</button>
+  <p style="text-align:center;font-size:10px;color:var(--sub);margin-top:8px">Gera CSV · copia mensagem · pronto para colar no WhatsApp</p>
+</div>
+<div style="height:24px"></div>
+
+<div class="mo" id="modal">
+  <div class="mi">
+    <div class="mk">✅</div>
+    <h2>Presença registrada!</h2>
+    <p id="modal-txt"></p>
+    <button class="mc" onclick="document.getElementById('modal').classList.remove('show')">Fechar</button>
+  </div>
+</div>
+
+<script>
+const AP=["Eduarda Andrade","Emilly Vitória","Gabriel Felipe","Gustavo Samuel","Isabela Martins","Kamilla Martins","Keyse Keren","Laysa de Jesus","Nicoly Oliveira","Pedro Henrique","Sarah Emanuely","Thais Gabriely","Vitória Amorim","Yan Victor"];
+const OUV=["Rafael Alves","Yasmin Camille"];
+const TODOS=[...AP,...OUV];
+const est={};TODOS.forEach(n=>est[n]=null);
+const AULAS=[];let dd=new Date(2026,5,6);const ff=new Date(2026,10,21);
+while(dd<=ff){if(dd.getDay()===6)AULAS.push(new Date(dd));dd.setDate(dd.getDate()+1);}
+let fotos=[];
+
+function init(){
+  renderList('ap-list',AP,false);renderList('ouv-list',OUV,true);
+  const hoje=new Date(),iso=hoje.toISOString().split('T')[0];
+  document.getElementById('fdata').value=iso;autoAula(iso);aleEsp(iso);
+  document.getElementById('fdata').addEventListener('change',e=>{autoAula(e.target.value);aleEsp(e.target.value);prev();});
+  ['faula','fobs'].forEach(id=>document.getElementById(id).addEventListener('input',prev));
+  document.getElementById('fresp').addEventListener('change',prev);
+  document.getElementById('ficam').addEventListener('change',procFoto);
+  document.getElementById('figal').addEventListener('change',procFoto);
+  prev();prog();
+}
+
+function autoAula(val){
+  if(!val)return;
+  const dt=new Date(val+'T12:00:00');let num=null;
+  for(let i=0;i<AULAS.length;i++){if(AULAS[i].getFullYear()===dt.getFullYear()&&AULAS[i].getMonth()===dt.getMonth()&&AULAS[i].getDate()===dt.getDate()){num=i+1;break;}}
+  if(num)document.getElementById('faula').value=num;
+  const ms=["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+  document.getElementById('data-n').textContent=`${String(dt.getDate()).padStart(2,'0')} ${ms[dt.getMonth()]} ${dt.getFullYear()}`;
+  document.getElementById('aula-n').textContent=num?`Aula ${String(num).padStart(2,'0')}`:'Aula —';
+}
+
+function aleEsp(val){document.getElementById('ale-wrap').style.display=val==='2026-09-26'?'block':'none';}
+
+function renderList(id,nomes,isOuv){
+  const c=document.getElementById(id);c.innerHTML='';
+  nomes.forEach((nome,i)=>{
+    const lbl=isOuv?`OUV${i+1}`:`${i+1}`;
+    const div=document.createElement('div');div.className='ai-row';
+    div.innerHTML=`<div class="al"><div class="nu${isOuv?' o':''}">${lbl}</div><div><div class="nm">${nome}</div><div class="ct">${isOuv?'Ouvinte/Suplente':'Aprovado'}</div></div></div><div class="pb-row"><button class="btn P" onclick="marcar('${nome}','P',this)">P</button><button class="btn F" onclick="marcar('${nome}','F',this)">F</button><button class="btn J" onclick="marcar('${nome}','J',this)">J</button></div>`;
+    c.appendChild(div);
+  });
+}
+
+function marcar(nome,val,btn){
+  est[nome]=val;
+  btn.closest('.pb-row').querySelectorAll('.btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  btn.closest('.ai-row').style.background=val==='P'?'#F0FDF4':val==='F'?'#FEF2F2':'#FFFBEB';
+  prog();prev();
+}
+
+function prog(){
+  const tot=TODOS.length,m=Object.values(est).filter(v=>v!==null).length,pct=Math.round(m/tot*100);
+  document.getElementById('pfill').style.width=pct+'%';
+  document.getElementById('ptxt').textContent=`${m} / ${tot} marcados`;
+}
+
+function procFoto(e){
+  const files=Array.from(e.target.files);if(!files.length)return;
+  fotos.push(...files);
+  const th=document.getElementById('thumbs');
+  files.forEach(f=>{const r=new FileReader();r.onload=ev=>{const img=document.createElement('img');img.src=ev.target.result;img.className='th';th.appendChild(img);};r.readAsDataURL(f);});
+  document.getElementById('fnome').textContent=`${fotos.length} foto(s) selecionada(s)`;
+  ['bcam','bgal'].forEach(id=>{document.getElementById(id).classList.add('ok');document.getElementById(id).querySelector('.fi').textContent='✅';});
+  prev();
+}
+
+function gerarMsg(){
+  const data=document.getElementById('fdata').value,num=document.getElementById('faula').value,resp=document.getElementById('fresp').value,obs=document.getElementById('fobs').value.trim();
+  if(!data||!resp)return null;
+  const dt=new Date(data+'T12:00:00'),df=`${String(dt.getDate()).padStart(2,'0')}/${String(dt.getMonth()+1).padStart(2,'0')}/${dt.getFullYear()}`;
+  const pres=TODOS.filter(n=>est[n]==='P'),falt=TODOS.filter(n=>est[n]==='F'),just=TODOS.filter(n=>est[n]==='J'),nm=TODOS.filter(n=>est[n]===null);
+  const tP=AP.filter(n=>est[n]==='P').length,tR=AP.filter(n=>est[n]!==null).length,pct=tR>0?Math.round(tP/tR*100):0;
+  let msg=`📋 *GRUPO SOMOS — PRESENÇA | Aula ${num}*\n📅 ${df} (sábado) · 13h–15h\n📍 Escola Mun. Hugo Werneck — Morro das Pedras\n👤 Responsável: *${resp}*\n\n✅ *PRESENTES (${pres.length}):*\n${pres.map(n=>`✅ ${n}`).join('\n')||'—'}\n\n❌ *FALTAS (${falt.length}):*\n${falt.map(n=>`❌ ${n}`).join('\n')||'—'}`;
+  if(just.length)msg+=`\n\n⚠️ *JUSTIFICADOS (${just.length}):*\n${just.map(n=>`⚠️ ${n}`).join('\n')}`;
+  if(nm.length)msg+=`\n\n⏳ *SEM REGISTRO:*\n${nm.map(n=>`— ${n}`).join('\n')}`;
+  msg+=`\n\n📊 *Frequência:* ${tP}/${tR} aprovados (${pct}%)`;
+  msg+=fotos.length?`\n📸 ${fotos.length} foto(s) registrada(s)`:`\n📸 ⚠️ Foto ainda não registrada!`;
+  if(obs)msg+=`\n\n📝 *Obs:* ${obs}`;
+  msg+=`\n\n— Grupo Somos · Coreto Cultural`;
+  return msg;
+}
+
+function prev(){document.getElementById('wpp-prev').textContent=gerarMsg()||'Preencha data, nº da aula e responsável para gerar a mensagem.';}
+
+function copiar(){
+  const msg=gerarMsg();if(!msg){alert('Preencha os campos obrigatórios.');return;}
+  navigator.clipboard.writeText(msg).then(()=>{const b=document.querySelector('.wc');b.textContent='✅ Copiado!';setTimeout(()=>b.textContent='📋 Copiar mensagem',2200);}).catch(()=>alert('Selecione o texto acima e copie manualmente.'));
+}
+
+function enviar(){
+  const data=document.getElementById('fdata').value,num=document.getElementById('faula').value,resp=document.getElementById('fresp').value;
+  if(!data){alert('Preencha a data.');return;}if(!num){alert('Preencha o número da aula.');return;}if(!resp){alert('Selecione o responsável.');return;}
+  const nm=TODOS.filter(n=>est[n]===null);
+  if(nm.length&&!confirm(`${nm.length} aluno(s) sem marcação:\n\n${nm.join('\n')}\n\nContinuar mesmo assim?`))return;
+  const rows=[['Grupo Somos — Registro de Presença'],[`Aula: ${num}`,`Data: ${data}`,`Responsável: ${resp}`],[],['Nº','Nome','Categoria','Presença']];
+  AP.forEach((n,i)=>rows.push([i+1,n,'Aprovado',est[n]||'']));rows.push([]);
+  OUV.forEach((n,i)=>rows.push([`OUV${i+1}`,n,'Ouvinte/Suplente',est[n]||'']));
+  const tP=AP.filter(n=>est[n]==='P').length,tR=AP.filter(n=>est[n]!==null).length;
+  rows.push([],[`Freq. aprovados:`,`${tP}/${tR} (${tR?Math.round(tP/tR*100):0}%)`]);
+  const obs=document.getElementById('fobs').value.trim();if(obs)rows.push(['Obs:',obs]);
+  const csv=rows.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download=`presenca_aula${String(num).padStart(2,'0')}_${data}.csv`;
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+  const msg=gerarMsg();if(msg)navigator.clipboard.writeText(msg).catch(()=>{});
+  const tF=TODOS.filter(n=>est[n]==='F').length;
+  document.getElementById('modal-txt').innerHTML=`<strong>Aula ${num} · ${data}</strong><br>Responsável: ${resp}<br><br>✅ ${tP+OUV.filter(n=>est[n]==='P').length} presentes &nbsp;|&nbsp; ❌ ${tF} faltas<br><br>CSV baixado automaticamente.<br>Mensagem copiada — cole no WhatsApp!`;
+  document.getElementById('modal').classList.add('show');
+}
+
+init();
+</script>
+</body>
+</html>
