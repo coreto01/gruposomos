@@ -6,11 +6,11 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#1A3A5C">
 <title>Grupo Somos · Presença</title>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
 :root{--az:#1A3A5C;--az2:#2E75B6;--vd:#1E7A3A;--vm:#B91C1C;--am:#92400E;--am-bg:#FEF3C7;--bg:#F0F4F8;--card:#fff;--tx:#1A3A5C;--sub:#64748B;--brd:#CBD5E1;--r:14px;}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--tx);padding-bottom:48px;}
-/* Header */
 .hd{background:var(--az);color:#fff;padding:14px 16px 12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.28);}
 .ht{display:flex;align-items:center;gap:10px;}
 .lg{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#2E75B6,#1E7A3A);display:flex;align-items:center;justify-content:center;font-size:18px;}
@@ -22,24 +22,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .pb{background:rgba(255,255,255,.2);border-radius:4px;height:4px;margin-top:8px;overflow:hidden;}
 .pf{height:100%;border-radius:4px;background:#4ADE80;transition:width .3s;}
 .pt{font-size:10px;opacity:.75;margin-top:3px;text-align:right;}
-/* Seções */
 .sc{margin:12px 12px 0;}
 .st{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sub);margin-bottom:6px;padding-left:2px;}
-/* Campos */
 .fr{display:flex;gap:8px;}
 .fd{flex:1;background:var(--card);border-radius:var(--r);box-shadow:0 2px 10px rgba(0,0,0,.08);padding:12px;}
 .fd label,.rc label,.mc-lbl{font-size:10px;color:var(--sub);font-weight:600;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:5px;}
-.fd input,.fd select,.rc select,.mc-sel{width:100%;border:1.5px solid var(--brd);border-radius:8px;padding:9px 10px;font-size:14px;color:var(--tx);background:var(--bg);font-family:inherit;outline:none;-webkit-appearance:none;appearance:none;}
-.fd input:focus,.fd select:focus,.rc select:focus,.mc-sel:focus{border-color:var(--az2);box-shadow:0 0 0 3px rgba(46,117,182,.12);}
+.fd input,.fd select,.rc select{width:100%;border:1.5px solid var(--brd);border-radius:8px;padding:9px 10px;font-size:14px;color:var(--tx);background:var(--bg);font-family:inherit;outline:none;-webkit-appearance:none;appearance:none;}
+.fd input:focus,.fd select:focus,.rc select:focus{border-color:var(--az2);}
 .rc{background:var(--card);border-radius:var(--r);box-shadow:0 2px 10px rgba(0,0,0,.08);padding:12px;}
 .rc select{padding:11px 12px;font-size:15px;}
-/* Card multi-select profissionais */
 .mc-card{background:var(--card);border-radius:var(--r);box-shadow:0 2px 10px rgba(0,0,0,.08);padding:12px;}
 .prof-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
 .chip{padding:7px 12px;border-radius:20px;border:1.5px solid var(--brd);font-size:12px;font-weight:600;color:var(--sub);background:var(--bg);cursor:pointer;transition:all .15s;-webkit-user-select:none;user-select:none;}
 .chip:active{transform:scale(.95);}
 .chip.on{background:var(--az);color:#fff;border-color:var(--az);}
-/* Lista alunos */
 .cd{background:var(--card);border-radius:var(--r);box-shadow:0 2px 10px rgba(0,0,0,.08);overflow:hidden;}
 .ai-row{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid #F1F5F9;gap:10px;transition:background .1s;}
 .ai-row:last-child{border-bottom:none;}
@@ -55,6 +51,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .btn.F.on{background:var(--vm);color:#fff;box-shadow:0 2px 5px rgba(185,28,28,.35);}
 .btn.J.on{background:#D97706;color:#fff;box-shadow:0 2px 5px rgba(217,119,6,.35);}
 .sep{background:var(--am-bg);padding:7px 14px;font-size:10px;font-weight:700;color:var(--am);text-transform:uppercase;letter-spacing:.07em;border-top:1px solid #FDE68A;}
+/* Login Google */
+.login-card{background:var(--card);border-radius:var(--r);box-shadow:0 2px 10px rgba(0,0,0,.08);padding:16px;text-align:center;}
+.login-card p{font-size:13px;color:var(--sub);margin-bottom:12px;line-height:1.5;}
+.g-btn{display:inline-flex;align-items:center;gap:10px;padding:11px 20px;background:#fff;border:1.5px solid var(--brd);border-radius:10px;font-size:14px;font-weight:600;color:#3c4043;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.12);transition:all .12s;}
+.g-btn:active{transform:scale(.97);}
+.g-btn img{width:20px;height:20px;}
+.user-badge{display:flex;align-items:center;gap:10px;background:#EAF3DE;border-radius:10px;padding:10px 14px;}
+.user-avatar{width:32px;height:32px;border-radius:50%;background:var(--vd);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.user-info{flex:1;text-align:left;}
+.user-info p{font-size:12px;font-weight:700;color:var(--vd);margin:0;}
+.user-info span{font-size:11px;color:#3B6D11;}
+.logout-btn{font-size:11px;color:var(--sub);background:none;border:none;cursor:pointer;text-decoration:underline;}
 /* Mídia */
 .fc{background:var(--card);border-radius:var(--r);box-shadow:0 2px 10px rgba(0,0,0,.08);padding:14px;}
 .fl{font-size:10px;color:var(--sub);font-weight:600;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:8px;}
@@ -67,25 +75,30 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .ths{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;}
 .th{width:64px;height:64px;border-radius:8px;object-fit:cover;border:2px solid var(--vd);}
 .th-vid{width:64px;height:64px;border-radius:8px;border:2px solid var(--az2);background:#EBF3FB;display:flex;align-items:center;justify-content:center;font-size:24px;}
-.drive-btn{display:block;width:100%;margin-top:10px;padding:13px;background:#1A73E8;color:#fff;border:none;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;}
-.drive-note{font-size:10px;color:var(--sub);margin-top:6px;text-align:center;line-height:1.5;}
-/* Obs */
+/* Upload progress */
+.upload-area{margin-top:10px;}
+.upload-item{display:flex;align-items:center;gap:8px;padding:7px 10px;background:#F8FAFC;border-radius:8px;margin-bottom:5px;font-size:12px;}
+.upload-icon{font-size:16px;flex-shrink:0;}
+.upload-nome{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--tx);}
+.upload-status{flex-shrink:0;font-size:11px;font-weight:700;}
+.upload-status.ok{color:var(--vd);}
+.upload-status.err{color:var(--vm);}
+.upload-status.loading{color:var(--az2);}
+.prog-upload{height:3px;border-radius:2px;background:#E2E8F0;margin-top:4px;overflow:hidden;}
+.prog-upload-fill{height:100%;border-radius:2px;background:var(--az2);transition:width .3s;}
 .oc{background:var(--card);border-radius:var(--r);box-shadow:0 2px 10px rgba(0,0,0,.08);padding:12px;}
 .oc label{font-size:10px;color:var(--sub);font-weight:600;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:6px;}
 .oc textarea{width:100%;border:1.5px solid var(--brd);border-radius:8px;padding:10px;font-size:13px;color:var(--tx);background:var(--bg);font-family:inherit;resize:none;outline:none;min-height:60px;}
-/* Preview */
 .wb{background:#1A3A5C;border-radius:var(--r);padding:14px;}
 .wl{font-size:10px;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;}
 .wm{font-size:12px;line-height:1.7;color:#E2E8F0;white-space:pre-wrap;background:rgba(255,255,255,.08);border-radius:8px;padding:12px;max-height:180px;overflow-y:auto;font-family:"Courier New",monospace;}
 .wc{margin-top:8px;width:100%;padding:10px;background:#25D366;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;}
-/* Botão enviar */
 .ev{display:block;width:100%;padding:17px;background:linear-gradient(135deg,var(--vd),#145A32);color:#fff;border:none;border-radius:var(--r);font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(30,122,58,.4);transition:all .15s;}
 .ev:active{transform:scale(.98);box-shadow:none;}
-/* Alerta */
+.ev:disabled{background:#94A3B8;box-shadow:none;}
 .ale{background:linear-gradient(135deg,#FEF3C7,#FDE68A);border:1.5px solid #F59E0B;border-radius:var(--r);padding:12px 14px;display:flex;gap:10px;align-items:flex-start;}
 .ale strong{font-size:13px;color:#92400E;display:block;margin-bottom:2px;}
 .ale span{font-size:11px;color:#B45309;}
-/* Modal */
 .mo{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:flex-end;justify-content:center;z-index:999;opacity:0;pointer-events:none;transition:opacity .25s;}
 .mo.show{opacity:1;pointer-events:all;}
 .mi{background:#fff;border-radius:24px 24px 0 0;padding:24px 20px 40px;width:100%;transform:translateY(60px);transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
@@ -93,15 +106,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .mk{font-size:48px;text-align:center;margin-bottom:8px;}
 .mi h2{font-size:20px;font-weight:800;color:var(--vd);text-align:center;margin-bottom:6px;}
 .mi .rsm{font-size:13px;color:var(--sub);text-align:center;line-height:1.5;margin-bottom:14px;}
-.st-ok{font-size:12px;color:var(--vd);font-weight:600;text-align:center;margin-bottom:4px;}
-.st-err{font-size:12px;color:var(--vm);font-weight:600;text-align:center;margin-bottom:4px;}
+.st-ok{font-size:12px;color:var(--vd);font-weight:600;text-align:center;margin:4px 0;}
+.st-err{font-size:12px;color:var(--vm);font-weight:600;text-align:center;margin:4px 0;}
 .m-passos{background:#F0FDF4;border-radius:12px;padding:14px;margin-bottom:12px;}
 .m-passos p{font-size:12px;font-weight:700;color:var(--vd);margin-bottom:8px;}
 .m-passos ol{padding-left:16px;margin:0;}
 .m-passos li{font-size:12px;color:#374151;margin-bottom:5px;line-height:1.4;}
-.m-passos li strong{color:var(--vd);}
-.m-drive{background:#EBF3FB;border-radius:12px;padding:12px;margin-bottom:10px;}
-.m-drive p{font-size:11px;color:var(--az);margin:0;}
 .m-wpp{display:block;width:100%;padding:14px;background:#25D366;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer;margin-bottom:8px;}
 .m-fechar{display:block;width:100%;padding:12px;background:#374151;color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;}
 </style>
@@ -125,6 +135,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
   <div class="ale">
     <span style="font-size:22px;flex-shrink:0">⭐</span>
     <div><strong>Véspera do Espetáculo — Palácio das Artes!</strong><span>Amanhã (27/09) é o grande dia. Presença obrigatória.</span></div>
+  </div>
+</div>
+
+<!-- Login Google -->
+<div class="sc">
+  <div class="st">Acesso</div>
+  <div class="login-card" id="login-area">
+    <p>Entre com sua conta Google para enviar fotos e vídeos automaticamente ao Drive da Coreto.</p>
+    <button class="g-btn" onclick="loginGoogle()">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="">
+      Entrar com Google
+    </button>
+  </div>
+  <div class="user-badge" id="user-badge" style="display:none">
+    <div class="user-avatar" id="user-initials">?</div>
+    <div class="user-info">
+      <p id="user-name">—</p>
+      <span id="user-email">—</span>
+    </div>
+    <button class="logout-btn" onclick="logoutGoogle()">Sair</button>
   </div>
 </div>
 
@@ -179,27 +209,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 <div class="sc">
   <div class="st">Fotos e vídeos da aula</div>
   <div class="fc">
-    <span class="fl">📸 Registre e envie para o Drive da Coreto</span>
+    <span class="fl">📸 Enviados automaticamente para o Drive da Coreto</span>
     <div class="fbs">
       <button class="fb" id="bcam" onclick="document.getElementById('ficam').click()">
         <span class="fi">📷</span>Câmera
       </button>
       <button class="fb" id="bgal" onclick="document.getElementById('figal').click()">
-        <span class="fi">🖼️</span>Foto/Vídeo
+        <span class="fi">🎬</span>Foto/Vídeo
       </button>
     </div>
     <input type="file" id="ficam" accept="image/*,video/*" capture="environment" class="fi-inp">
     <input type="file" id="figal" accept="image/*,video/*" multiple class="fi-inp">
     <div class="ths" id="thumbs"></div>
-    <div id="fnome" style="font-size:11px;color:var(--sub);margin-top:6px;"></div>
-    <button class="drive-btn" onclick="abrirDrive()">
-      <span>📁</span> Abrir pasta do Drive para enviar arquivos
-    </button>
-    <div class="drive-note">
-      Nomeie os arquivos como:<br>
-      <strong>2026_Grupo_Somos_[Seu Nome]_[Nº crescente]</strong><br>
-      Ex: 2026_Grupo_Somos_Cyntia_Reyder_001.jpg
-    </div>
+    <div class="upload-area" id="upload-area"></div>
   </div>
 </div>
 
@@ -221,28 +243,25 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 </div>
 
 <div class="sc">
-  <button class="ev" onclick="enviar()">✅ Registrar Presença</button>
-  <p style="text-align:center;font-size:10px;color:var(--sub);margin-top:8px;">Salva na planilha da Coreto · copia mensagem · abre WhatsApp</p>
+  <button class="ev" id="btn-enviar" onclick="enviar()">✅ Registrar Presença</button>
+  <p style="text-align:center;font-size:10px;color:var(--sub);margin-top:8px;">Salva na planilha · envia mídias ao Drive · copia mensagem</p>
 </div>
 
 <div style="height:20px"></div>
 
-<!-- Modal -->
 <div class="mo" id="modal">
   <div class="mi">
-    <div class="mk">✅</div>
-    <h2>Presença registrada!</h2>
+    <div class="mk" id="modal-icon">✅</div>
+    <h2 id="modal-title">Presença registrada!</h2>
     <p class="rsm" id="modal-txt"></p>
     <div id="st-sheets" style="display:none"></div>
+    <div id="st-drive" style="display:none"></div>
     <div class="m-passos">
-      <p>📲 Agora, dois passos rápidos:</p>
+      <p>📲 Último passo:</p>
       <ol>
-        <li>Toque em <strong>"Abrir WhatsApp"</strong> abaixo e cole a mensagem</li>
-        <li>Envie também as <strong>fotos/vídeos</strong> para a pasta do Drive</li>
+        <li>Toque em <strong>"Abrir WhatsApp"</strong> abaixo</li>
+        <li>Cole a mensagem e envie no grupo</li>
       </ol>
-    </div>
-    <div class="m-drive">
-      <p>📁 Lembre-se de nomear os arquivos:<br><strong>2026_Grupo_Somos_[Seu Nome]_[Nº]</strong></p>
     </div>
     <button class="m-wpp" onclick="abrirWpp()">📲 Abrir WhatsApp do grupo</button>
     <button class="m-fechar" onclick="fecharModal()">Fechar</button>
@@ -250,63 +269,107 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 </div>
 
 <script>
-const AP=["Eduarda Andrade","Emilly Vitória","Gabriel Felipe","Gustavo Samuel","Isabela Martins","Kamilla Martins","Keyse Keren","Laysa de Jesus","Nicoly Oliveira","Pedro Henrique","Sarah Emanuely","Thais Gabriely","Vitória Amorim","Yan Victor"];
-const OUV=["Rafael Alves","Yasmin Camille"];
-const TODOS=[...AP,...OUV];
-const est={};TODOS.forEach(n=>est[n]=null);
-let profsPresentes=[];
-let midiasCount=0;
+const CLIENT_ID   = '461463289721-c92l8qgnid2bq0qug771ijt9fbbnhbv3.apps.googleusercontent.com';
+const DRIVE_FOLDER= '13JpMm4jC9nsERpT8Br2A5Czb9R5bOaIs';
+const SCRIPT_URL  = 'https://script.google.com/macros/s/AKfycbylPaAwKObeaDL_PMRyIsgUHwwrd7xihvkby8eSa-02E4s8yCMRC_lwBIYD-cAMIXzj/exec';
+const WPP_NUM     = '5531999838286';
+const SCOPES      = 'https://www.googleapis.com/auth/drive.file';
 
-const SCRIPT_URL='https://script.google.com/macros/s/AKfycbylPaAwKObeaDL_PMRyIsgUHwwrd7xihvkby8eSa-02E4s8yCMRC_lwBIYD-cAMIXzj/exec';
-const WPP_NUM='5531999838286';
-const DRIVE_URL='https://drive.google.com/drive/folders/13JpMm4jC9nsERpT8Br2A5Czb9R5bOaIs';
+const AP  = ["Eduarda Andrade","Emilly Vitória","Gabriel Felipe","Gustavo Samuel","Isabela Martins","Kamilla Martins","Keyse Keren","Laysa de Jesus","Nicoly Oliveira","Pedro Henrique","Sarah Emanuely","Thais Gabriely","Vitória Amorim","Yan Victor"];
+const OUV = ["Rafael Alves","Yasmin Camille"];
+const TODOS = [...AP,...OUV];
+const est = {}; TODOS.forEach(n=>est[n]=null);
+let profsPresentes = [];
+let arquivosPendentes = [];
+let tokenAcesso = null;
+let usuarioLogado = null;
+let contadorArquivo = 1;
 
-// Calendário sábados
-const AULAS=[];let dd=new Date(2026,5,6);const ff=new Date(2026,10,21);
-while(dd<=ff){if(dd.getDay()===6)AULAS.push(new Date(dd));dd.setDate(dd.getDate()+1);}
+const AULAS = [];
+let dd = new Date(2026,5,6);
+const ff = new Date(2026,10,21);
+while(dd<=ff){ if(dd.getDay()===6) AULAS.push(new Date(dd)); dd.setDate(dd.getDate()+1); }
 
-function init(){
-  renderList('ap-list',AP,false);
-  renderList('ouv-list',OUV,true);
-  const iso=new Date().toISOString().split('T')[0];
-  document.getElementById('fdata').value=iso;
-  autoAula(iso); aleEsp(iso);
-  document.getElementById('fdata').addEventListener('change',e=>{autoAula(e.target.value);aleEsp(e.target.value);prev();});
-  ['faula','fobs'].forEach(id=>document.getElementById(id).addEventListener('input',prev));
-  document.getElementById('fresp').addEventListener('change',e=>{
-    // Auto-seleciona o responsável nos chips de profissionais
-    const nome=e.target.value;
-    if(nome){
-      document.querySelectorAll('.chip').forEach(c=>{
-        if(c.dataset.nome===nome && !c.classList.contains('on')){
-          c.classList.add('on');
-          if(!profsPresentes.includes(nome)) profsPresentes.push(nome);
+/* ── Login Google ─────────────────────────────────── */
+function loginGoogle(){
+  const client = google.accounts.oauth2.initTokenClient({
+    client_id: CLIENT_ID,
+    scope: SCOPES,
+    callback: (resp) => {
+      if(resp.error){ alert('Erro ao fazer login: ' + resp.error); return; }
+      tokenAcesso = resp.access_token;
+      fetch('https://www.googleapis.com/oauth2/v3/userinfo',{
+        headers:{ Authorization:'Bearer '+tokenAcesso }
+      }).then(r=>r.json()).then(info=>{
+        usuarioLogado = info;
+        document.getElementById('login-area').style.display='none';
+        const badge = document.getElementById('user-badge');
+        badge.style.display='flex';
+        const iniciais = (info.name||'?').split(' ').map(p=>p[0]).slice(0,2).join('').toUpperCase();
+        document.getElementById('user-initials').textContent = iniciais;
+        document.getElementById('user-name').textContent = info.name || info.email;
+        document.getElementById('user-email').textContent = info.email || '';
+        // auto-selecionar responsável se nome bater
+        const sel = document.getElementById('fresp');
+        const firstName = (info.name||'').split(' ')[0].toLowerCase();
+        for(let i=0;i<sel.options.length;i++){
+          if(sel.options[i].text.toLowerCase().includes(firstName)){
+            sel.value = sel.options[i].value;
+            selecionarResp(sel.options[i].text);
+            break;
+          }
         }
+        prev();
       });
     }
-    prev();
   });
-  document.getElementById('ficam').addEventListener('change',procMidia);
-  document.getElementById('figal').addEventListener('change',procMidia);
+  client.requestAccessToken();
+}
+
+function logoutGoogle(){
+  tokenAcesso=null; usuarioLogado=null;
+  document.getElementById('login-area').style.display='block';
+  document.getElementById('user-badge').style.display='none';
+}
+
+/* ── Init ─────────────────────────────────────────── */
+function init(){
+  renderList('ap-list', AP,  false);
+  renderList('ouv-list',OUV, true);
+  const iso = new Date().toISOString().split('T')[0];
+  document.getElementById('fdata').value = iso;
+  autoAula(iso); aleEsp(iso);
+  document.getElementById('fdata').addEventListener('change', e=>{autoAula(e.target.value);aleEsp(e.target.value);prev();});
+  ['faula','fobs'].forEach(id=>document.getElementById(id).addEventListener('input',prev));
+  document.getElementById('fresp').addEventListener('change', e=>{selecionarResp(e.target.value);prev();});
+  document.getElementById('ficam').addEventListener('change', selecionarMidia);
+  document.getElementById('figal').addEventListener('change', selecionarMidia);
   prev(); prog();
 }
 
+function selecionarResp(nome){
+  if(!nome) return;
+  document.querySelectorAll('.chip').forEach(c=>{
+    if(c.dataset.nome===nome && !c.classList.contains('on')){
+      c.classList.add('on');
+      if(!profsPresentes.includes(nome)) profsPresentes.push(nome);
+    }
+  });
+}
+
 function autoAula(val){
-  if(!val)return;
-  const dt=new Date(val+'T12:00:00');
-  let num=null;
+  if(!val) return;
+  const dt = new Date(val+'T12:00:00'); let num=null;
   for(let i=0;i<AULAS.length;i++){
     if(AULAS[i].getFullYear()===dt.getFullYear()&&AULAS[i].getMonth()===dt.getMonth()&&AULAS[i].getDate()===dt.getDate()){num=i+1;break;}
   }
-  if(num)document.getElementById('faula').value=num;
+  if(num) document.getElementById('faula').value=num;
   const ms=["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
-  document.getElementById('data-n').textContent=`${String(dt.getDate()).padStart(2,'0')} ${ms[dt.getMonth()]} ${dt.getFullYear()}`;
-  document.getElementById('aula-n').textContent=num?`Aula ${String(num).padStart(2,'0')}`:'Aula —';
+  document.getElementById('data-n').textContent=num?dt.getDate()+' '+ms[dt.getMonth()]+' '+dt.getFullYear():'—';
+  document.getElementById('aula-n').textContent=num?'Aula '+String(num).padStart(2,'0'):'Aula —';
 }
 
-function aleEsp(val){
-  document.getElementById('ale-wrap').style.display=val==='2026-09-26'?'block':'none';
-}
+function aleEsp(val){ document.getElementById('ale-wrap').style.display=val==='2026-09-26'?'block':'none'; }
 
 function toggleProf(el){
   el.classList.toggle('on');
@@ -317,11 +380,18 @@ function toggleProf(el){
 }
 
 function renderList(id,nomes,isOuv){
-  const c=document.getElementById(id);c.innerHTML='';
+  const c=document.getElementById(id); c.innerHTML='';
   nomes.forEach((nome,i)=>{
-    const lbl=isOuv?`OUV${i+1}`:`${i+1}`;
-    const div=document.createElement('div');div.className='ai-row';
-    div.innerHTML=`<div class="al"><div class="nu${isOuv?' o':''}">${lbl}</div><div><div class="nm">${nome}</div><div class="ct">${isOuv?'Ouvinte/Suplente':'Aprovado'}</div></div></div><div class="pb-row"><button class="btn P" onclick="marcar('${nome}','P',this)">P</button><button class="btn F" onclick="marcar('${nome}','F',this)">F</button><button class="btn J" onclick="marcar('${nome}','J',this)">J</button></div>`;
+    const lbl=isOuv?'OUV'+(i+1):''+(i+1);
+    const div=document.createElement('div'); div.className='ai-row';
+    div.innerHTML='<div class="al"><div class="nu'+(isOuv?' o':'')+'">'
+      +lbl+'</div><div><div class="nm">'+nome+'</div><div class="ct">'
+      +(isOuv?'Ouvinte/Suplente':'Aprovado')+'</div></div></div>'
+      +'<div class="pb-row">'
+      +'<button class="btn P" onclick="marcar(\''+nome+'\',\'P\',this)">P</button>'
+      +'<button class="btn F" onclick="marcar(\''+nome+'\',\'F\',this)">F</button>'
+      +'<button class="btn J" onclick="marcar(\''+nome+'\',\'J\',this)">J</button>'
+      +'</div>';
     c.appendChild(div);
   });
 }
@@ -331,29 +401,53 @@ function marcar(nome,val,btn){
   btn.closest('.pb-row').querySelectorAll('.btn').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   btn.closest('.ai-row').style.background=val==='P'?'#F0FDF4':val==='F'?'#FEF2F2':'#FFFBEB';
-  prog();prev();
+  prog(); prev();
 }
 
 function prog(){
-  const tot=TODOS.length,m=Object.values(est).filter(v=>v!==null).length;
+  const tot=TODOS.length, m=Object.values(est).filter(v=>v!==null).length;
   document.getElementById('pfill').style.width=Math.round(m/tot*100)+'%';
-  document.getElementById('ptxt').textContent=`${m} / ${tot} marcados`;
+  document.getElementById('ptxt').textContent=m+' / '+tot+' marcados';
 }
 
-function procMidia(e){
-  const files=Array.from(e.target.files);if(!files.length)return;
-  midiasCount+=files.length;
-  const th=document.getElementById('thumbs');
+/* ── Selecionar mídia ─────────────────────────────── */
+function selecionarMidia(e){
+  const files=Array.from(e.target.files); if(!files.length) return;
+  const data  = document.getElementById('fdata').value||'sem-data';
+  const num   = document.getElementById('faula').value||'XX';
+  const resp  = (document.getElementById('fresp').value||'responsavel').replace(/\s+/g,'_');
+  const thumbs= document.getElementById('thumbs');
+  const area  = document.getElementById('upload-area');
+
   files.forEach(f=>{
+    const ext   = f.name.split('.').pop()||'jpg';
+    const nSeq  = String(contadorArquivo).padStart(3,'0');
+    const nomeArq = '2026_Grupo_Somos_'+resp+'_'+nSeq+'.'+ext;
+    contadorArquivo++;
+
+    const item = { file:f, nome:nomeArq, status:'pendente', id:'arq-'+contadorArquivo };
+    arquivosPendentes.push(item);
+
+    // Thumb
     if(f.type.startsWith('image/')){
       const r=new FileReader();
-      r.onload=ev=>{const img=document.createElement('img');img.src=ev.target.result;img.className='th';th.appendChild(img);};
+      r.onload=ev=>{const img=document.createElement('img');img.src=ev.target.result;img.className='th';thumbs.appendChild(img);};
       r.readAsDataURL(f);
     } else {
-      const div=document.createElement('div');div.className='th-vid';div.textContent='🎬';th.appendChild(div);
+      const div=document.createElement('div');div.className='th-vid';div.textContent='🎬';thumbs.appendChild(div);
     }
+
+    // Item de status
+    const div=document.createElement('div');div.className='upload-item';div.id=item.id;
+    div.innerHTML='<span class="upload-icon">'+(f.type.startsWith('image/'))?'📷':'🎬'+'</span>'
+      +'<span class="upload-nome">'+nomeArq+'</span>'
+      +'<span class="upload-status loading" id="st-'+item.id+'">Aguardando...</span>';
+    area.appendChild(div);
+    const pb=document.createElement('div');pb.className='prog-upload';
+    const pf=document.createElement('div');pf.className='prog-upload-fill';pf.id='pf-'+item.id;pf.style.width='0%';
+    pb.appendChild(pf);area.appendChild(pb);
   });
-  document.getElementById('fnome').textContent=`${midiasCount} arquivo(s) selecionado(s)`;
+
   ['bcam','bgal'].forEach(id=>{
     document.getElementById(id).classList.add('ok');
     document.getElementById(id).querySelector('.fi').textContent='✅';
@@ -361,103 +455,194 @@ function procMidia(e){
   prev();
 }
 
-function abrirDrive(){window.open(DRIVE_URL,'_blank');}
+/* ── Upload para o Drive ──────────────────────────── */
+async function uploadDrive(item){
+  const stEl = document.getElementById('st-'+item.id);
+  const pfEl = document.getElementById('pf-'+item.id);
+  if(stEl) stEl.textContent='Enviando...';
+  if(pfEl) pfEl.style.width='30%';
 
+  const data  = document.getElementById('fdata').value||'2026-00-00';
+  const num   = document.getElementById('faula').value||'0';
+  // Subpasta: AAAA-MM-DD_AulaNN
+  const nomePasta = data+'_Aula'+String(num).padStart(2,'0');
+
+  try {
+    // 1. Criar/obter subpasta
+    let pastaId = await obterOuCriarPasta(nomePasta, DRIVE_FOLDER);
+    if(pfEl) pfEl.style.width='50%';
+
+    // 2. Upload do arquivo
+    const meta = JSON.stringify({ name: item.nome, parents:[pastaId] });
+    const form = new FormData();
+    form.append('metadata', new Blob([meta],{type:'application/json'}));
+    form.append('file', item.file);
+
+    const resp = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart',{
+      method:'POST',
+      headers:{ Authorization:'Bearer '+tokenAcesso },
+      body: form
+    });
+
+    if(!resp.ok) throw new Error('HTTP '+resp.status);
+    if(pfEl) pfEl.style.width='100%';
+    if(stEl){ stEl.textContent='✅ Enviado'; stEl.className='upload-status ok'; }
+    item.status='ok';
+  } catch(err){
+    if(stEl){ stEl.textContent='⚠️ Erro'; stEl.className='upload-status err'; }
+    item.status='erro';
+    console.error('Upload erro:', err);
+  }
+}
+
+async function obterOuCriarPasta(nome, parentId){
+  // Buscar pasta existente
+  const q = encodeURIComponent('name="'+nome+'" and "'+parentId+'" in parents and mimeType="application/vnd.google-apps.folder" and trashed=false');
+  const r = await fetch('https://www.googleapis.com/drive/v3/files?q='+q+'&fields=files(id)',{
+    headers:{ Authorization:'Bearer '+tokenAcesso }
+  });
+  const data = await r.json();
+  if(data.files && data.files.length > 0) return data.files[0].id;
+
+  // Criar nova pasta
+  const cr = await fetch('https://www.googleapis.com/drive/v3/files',{
+    method:'POST',
+    headers:{ Authorization:'Bearer '+tokenAcesso, 'Content-Type':'application/json' },
+    body: JSON.stringify({ name:nome, mimeType:'application/vnd.google-apps.folder', parents:[parentId] })
+  });
+  const pasta = await cr.json();
+  return pasta.id;
+}
+
+/* ── Preview WhatsApp ─────────────────────────────── */
 function gerarMsg(){
   const data=document.getElementById('fdata').value;
-  const num=document.getElementById('faula').value;
+  const num =document.getElementById('faula').value;
   const resp=document.getElementById('fresp').value;
-  const obs=document.getElementById('fobs').value.trim();
-  if(!data||!resp)return null;
+  const obs =document.getElementById('fobs').value.trim();
+  if(!data||!resp) return null;
   const dt=new Date(data+'T12:00:00');
-  const df=`${String(dt.getDate()).padStart(2,'0')}/${String(dt.getMonth()+1).padStart(2,'0')}/${dt.getFullYear()}`;
+  const df=String(dt.getDate()).padStart(2,'0')+'/'+String(dt.getMonth()+1).padStart(2,'0')+'/'+dt.getFullYear();
   const pres=TODOS.filter(n=>est[n]==='P');
   const falt=TODOS.filter(n=>est[n]==='F');
   const just=TODOS.filter(n=>est[n]==='J');
-  const nm=TODOS.filter(n=>est[n]===null);
+  const nm  =TODOS.filter(n=>est[n]===null);
   const tP=AP.filter(n=>est[n]==='P').length;
   const tR=AP.filter(n=>est[n]!==null).length;
   const pct=tR>0?Math.round(tP/tR*100):0;
   const profs=profsPresentes.length?profsPresentes.join(', '):'—';
+  const nMidias=arquivosPendentes.length;
+  const nOk=arquivosPendentes.filter(a=>a.status==='ok').length;
 
-  let msg=`📋 *GRUPO SOMOS — PRESENÇA | Aula ${num}*\n`;
-  msg+=`📅 ${df} (sábado) · 13h–15h\n`;
-  msg+=`📍 Escola Mun. Hugo Werneck — Morro das Pedras\n`;
-  msg+=`👤 Responsável: *${resp}*\n`;
-  msg+=`👥 Profissionais: ${profs}\n\n`;
-  msg+=`✅ *PRESENTES (${pres.length}):*\n${pres.map(n=>`✅ ${n}`).join('\n')||'—'}\n\n`;
-  msg+=`❌ *FALTAS (${falt.length}):*\n${falt.map(n=>`❌ ${n}`).join('\n')||'—'}`;
-  if(just.length)msg+=`\n\n⚠️ *JUSTIFICADOS (${just.length}):*\n${just.map(n=>`⚠️ ${n}`).join('\n')}`;
-  if(nm.length)msg+=`\n\n⏳ *SEM REGISTRO:*\n${nm.map(n=>`— ${n}`).join('\n')}`;
-  msg+=`\n\n📊 *Frequência:* ${tP}/${tR} aprovados (${pct}%)`;
-  msg+=midiasCount?`\n📸 ${midiasCount} arquivo(s) — enviar no Drive`:`\n📸 ⚠️ Enviar mídia no Drive!`;
-  if(obs)msg+=`\n\n📝 *Obs:* ${obs}`;
-  msg+=`\n\n— Grupo Somos · Coreto Cultural`;
+  let msg='📋 *GRUPO SOMOS — PRESENÇA | Aula '+num+'*\n';
+  msg+='📅 '+df+' (sábado) · 13h–15h\n';
+  msg+='📍 Escola Mun. Hugo Werneck — Morro das Pedras\n';
+  msg+='👤 Responsável: *'+resp+'*\n';
+  msg+='👥 Profissionais: '+profs+'\n\n';
+  msg+='✅ *PRESENTES ('+pres.length+'):*\n'+(pres.map(n=>'✅ '+n).join('\n')||'—')+'\n\n';
+  msg+='❌ *FALTAS ('+falt.length+'):*\n'+(falt.map(n=>'❌ '+n).join('\n')||'—');
+  if(just.length) msg+='\n\n⚠️ *JUSTIFICADOS ('+just.length+'):*\n'+just.map(n=>'⚠️ '+n).join('\n');
+  if(nm.length)   msg+='\n\n⏳ *SEM REGISTRO:*\n'+nm.map(n=>'— '+n).join('\n');
+  msg+='\n\n📊 *Frequência:* '+tP+'/'+tR+' aprovados ('+pct+'%)';
+  if(nMidias>0) msg+='\n📁 '+nOk+'/'+nMidias+' arquivo(s) enviado(s) ao Drive';
+  if(obs) msg+='\n\n📝 *Obs:* '+obs;
+  msg+='\n\n— Grupo Somos · Coreto Cultural';
   return msg;
 }
 
 function prev(){
-  document.getElementById('wpp-prev').textContent=
-    gerarMsg()||'Preencha data, nº da aula e responsável para gerar a mensagem.';
+  document.getElementById('wpp-prev').textContent=gerarMsg()||'Preencha data, nº da aula e responsável para gerar a mensagem.';
 }
 
 function copiar(){
-  const msg=gerarMsg();if(!msg){alert('Preencha os campos obrigatórios.');return;}
+  const msg=gerarMsg(); if(!msg){alert('Preencha os campos obrigatórios.');return;}
   navigator.clipboard.writeText(msg).then(()=>{
     const b=document.querySelector('.wc');b.textContent='✅ Copiado!';
     setTimeout(()=>b.textContent='📋 Copiar mensagem',2200);
-  }).catch(()=>alert('Selecione o texto acima e copie manualmente.'));
+  });
 }
 
-function enviar(){
+/* ── Enviar ───────────────────────────────────────── */
+async function enviar(){
   const data=document.getElementById('fdata').value;
-  const num=document.getElementById('faula').value;
+  const num =document.getElementById('faula').value;
   const resp=document.getElementById('fresp').value;
-  if(!data){alert('Preencha a data da aula.');return;}
-  if(!num){alert('Preencha o número da aula.');return;}
+  if(!data){alert('Preencha a data.');return;}
+  if(!num) {alert('Preencha o número da aula.');return;}
   if(!resp){alert('Selecione o responsável.');return;}
+
   const nm=TODOS.filter(n=>est[n]===null);
-  if(nm.length&&!confirm(`${nm.length} aluno(s) sem marcação:\n\n${nm.join('\n')}\n\nContinuar mesmo assim?`))return;
+  if(nm.length&&!confirm(nm.length+' aluno(s) sem marcação:\n\n'+nm.join('\n')+'\n\nContinuar mesmo assim?')) return;
+
+  if(!tokenAcesso && arquivosPendentes.length>0){
+    alert('Faça login com o Google primeiro para enviar as fotos/vídeos ao Drive.');
+    return;
+  }
+
+  const btn=document.getElementById('btn-enviar');
+  btn.disabled=true; btn.textContent='⏳ Registrando...';
 
   const tP=AP.filter(n=>est[n]==='P').length;
   const tF=AP.filter(n=>est[n]==='F').length;
   const tJ=AP.filter(n=>est[n]==='J').length;
   const tR=tP+tF+tJ;
   const pct=tR>0?Math.round(tP/tR*100):0;
-  const presencas={};TODOS.forEach(n=>presencas[n]=est[n]||'');
+  const presencas={}; TODOS.forEach(n=>presencas[n]=est[n]||'');
 
   const payload={
-    data,aula:num,responsavel:resp,
+    data, aula:num, responsavel:resp,
     profissionais:profsPresentes.join(', '),
     presencas,
     totais:{presentes:tP,faltas:tF,justificados:tJ,percentual:pct},
-    midias:midiasCount,
+    midias:arquivosPendentes.length,
     obs:document.getElementById('fobs').value.trim()
   };
 
+  // Upload arquivos em paralelo
+  let uploadOk=0;
+  if(arquivosPendentes.length>0 && tokenAcesso){
+    btn.textContent='📁 Enviando mídia...';
+    await Promise.all(arquivosPendentes.map(a=>uploadDrive(a)));
+    uploadOk=arquivosPendentes.filter(a=>a.status==='ok').length;
+  }
+
+  // Envia para planilha
+  btn.textContent='📊 Salvando na planilha...';
   const msg=gerarMsg();
-  if(msg)navigator.clipboard.writeText(msg).catch(()=>{});
+  if(msg) navigator.clipboard.writeText(msg).catch(()=>{});
 
   const tTodos=TODOS.filter(n=>est[n]==='P').length;
   document.getElementById('modal-txt').innerHTML=
-    `<strong>Aula ${num} · ${data}</strong><br>Responsável: ${resp}<br>`+
-    `✅ ${tTodos} presentes &nbsp;|&nbsp; ❌ ${tF} faltas`;
-  document.getElementById('modal').classList.add('show');
+    '<strong>Aula '+num+' · '+data+'</strong><br>Responsável: '+resp+'<br>'
+    +'✅ '+tTodos+' presentes &nbsp;|&nbsp; ❌ '+tF+' faltas';
 
-  // Envia para Google Sheets
-  const st=document.getElementById('st-sheets');
-  st.style.display='block';st.className='st-ok';st.textContent='⏳ Salvando na planilha...';
+  const stS=document.getElementById('st-sheets');
+  const stD=document.getElementById('st-drive');
+  stS.style.display='block'; stD.style.display='block';
+
+  if(arquivosPendentes.length>0){
+    stD.className=uploadOk===arquivosPendentes.length?'st-ok':'st-err';
+    stD.textContent=uploadOk===arquivosPendentes.length
+      ?'📁 '+uploadOk+' arquivo(s) enviado(s) ao Drive!'
+      :'⚠️ '+uploadOk+'/'+arquivosPendentes.length+' arquivo(s) enviado(s). Verifique o Drive.';
+  } else {
+    stD.style.display='none';
+  }
+
   fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-    .then(()=>{st.textContent='✅ Salvo na planilha da Coreto!';})
-    .catch(()=>{st.className='st-err';st.textContent='⚠️ Erro ao salvar. Reenvie a mensagem do WhatsApp.';});
+    .then(()=>{stS.className='st-ok';stS.textContent='✅ Salvo na planilha da Coreto!';})
+    .catch(()=>{stS.className='st-err';stS.textContent='⚠️ Erro ao salvar na planilha.';});
+
+  btn.disabled=false; btn.textContent='✅ Registrar Presença';
+  document.getElementById('modal').classList.add('show');
 }
 
 function abrirWpp(){
   const msg=gerarMsg();
-  window.open(`https://wa.me/${WPP_NUM}?text=${encodeURIComponent(msg||'')}`, '_blank');
+  window.open('https://wa.me/'+WPP_NUM+'?text='+encodeURIComponent(msg||''),'_blank');
 }
 
-function fecharModal(){document.getElementById('modal').classList.remove('show');}
+function fecharModal(){ document.getElementById('modal').classList.remove('show'); }
 
 init();
 </script>
