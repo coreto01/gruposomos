@@ -306,9 +306,10 @@ function loginGoogle(){
         document.getElementById('login-area').style.display='none';
         const badge = document.getElementById('user-badge');
         badge.style.display='flex';
-        const iniciais = (info.name||'?').split(' ').map(p=>p[0]).slice(0,2).join('').toUpperCase();
+        const nome = info.name || info.email || '?';
+        const iniciais = nome.split(' ').filter(p=>p.length>0).map(p=>p[0]).slice(0,2).join('').toUpperCase();
         document.getElementById('user-initials').textContent = iniciais;
-        document.getElementById('user-name').textContent = info.name || info.email;
+        document.getElementById('user-name').textContent = nome;
         document.getElementById('user-email').textContent = info.email || '';
         // auto-selecionar responsável se nome bater
         const sel = document.getElementById('fresp');
