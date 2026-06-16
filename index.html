@@ -299,30 +299,13 @@ function loginGoogle(){
     callback: (resp) => {
       if(resp.error){ alert('Erro ao fazer login: ' + resp.error); return; }
       tokenAcesso = resp.access_token;
-      fetch('https://www.googleapis.com/oauth2/v3/userinfo',{
-        headers:{ Authorization:'Bearer '+tokenAcesso }
-      }).then(r=>r.json()).then(info=>{
-        usuarioLogado = info;
-        document.getElementById('login-area').style.display='none';
-        const badge = document.getElementById('user-badge');
-        badge.style.display='flex';
-        const nome = info.name || info.email || '?';
-        const iniciais = nome.split(' ').filter(p=>p.length>0).map(p=>p[0]).slice(0,2).join('').toUpperCase();
-        document.getElementById('user-initials').textContent = iniciais;
-        document.getElementById('user-name').textContent = nome;
-        document.getElementById('user-email').textContent = info.email || '';
-        // auto-selecionar responsável se nome bater
-        const sel = document.getElementById('fresp');
-        const firstName = (info.name||'').split(' ')[0].toLowerCase();
-        for(let i=0;i<sel.options.length;i++){
-          if(sel.options[i].text.toLowerCase().includes(firstName)){
-            sel.value = sel.options[i].value;
-            selecionarResp(sel.options[i].text);
-            break;
-          }
-        }
-        prev();
-      });
+      document.getElementById('login-area').style.display='none';
+      const badge = document.getElementById('user-badge');
+      badge.style.display='flex';
+      document.getElementById('user-initials').textContent='✓';
+      document.getElementById('user-name').textContent='Drive conectado';
+      document.getElementById('user-email').textContent='Fotos e vídeos serão enviados automaticamente';
+      prev();
     }
   });
   client.requestAccessToken();
